@@ -28,12 +28,10 @@ export default function Login() {
     
 
   function onSubmit (values) {
-      console.log(values);
     var data = JSON.stringify(values);
-    console.log(data);
     var config = {
         method: 'post',
-        url: 'http://127.0.0.1:5000/login',
+        url: 'http://127.0.0.1:3000/login',
         headers: { 
             'Content-Type': 'application/json',
         },
@@ -43,7 +41,7 @@ export default function Login() {
     axios(config)
     .then(function (response) {
         console.log(JSON.stringify(response.data));
-        'token' in response.data ? history.push("/home"):setLoggedIn(response.data.message)
+        'token' in response.data ? history.push("/home"):setLoggedIn(response.data.status)
     })
     .catch(function (error) {
         console.log(error);
